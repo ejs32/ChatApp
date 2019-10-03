@@ -1,0 +1,17 @@
+  
+<html>
+	<head>
+	<script>
+		function pageLoaded(){
+			var newDiv = document.createElement("div"); 
+			var newContent = document.createTextNode("New element added"); 
+			// add the text node to the newly created div
+			newDiv.appendChild(newContent);  
+			document.body.appendChild(newDiv);
+		}
+	</script>
+	</head>
+	<body onload="pageLoaded();">
+	</body>
+
+</html>
