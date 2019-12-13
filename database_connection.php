@@ -2,13 +2,8 @@
 
 //database_connection.php
 
-$host="sql1.njit.edu";
-$database="ejs32";
-$username="ejs32";
-$password="xntA03GI";
-
-$conn_string = "mysql:host=$host;dbname=$database;charset=utf8mb4";
-$connect = new PDO($conn_string, $username, $password);
+require('config.php');
+$connect = new PDO("mysql:host=$host;dbname=$database;charset=utf8mb4", "$username", "$password");
 
 date_default_timezone_set('America/New_York');
 
@@ -52,7 +47,7 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect)
 		{
 			if($row["status"] == '2')
 			{
-				$chat_message = '<em>This message has been removed</em>';
+				$chat_message = '<em>[DELETED]</em>';
 				$user_name = '<b class="text-success">You</b>';
 			}
 			else
@@ -68,7 +63,7 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect)
 		{
 			if($row["status"] == '2')
 			{
-				$chat_message = '<em>This message has been removed</em>';
+				$chat_message = '<em>[DELETED]</em>';
 			}
 			else
 			{
@@ -153,7 +148,7 @@ function fetch_is_type_status($user_id, $connect)
 	return $output;
 }
 
-function fetch_group_chat_history($connect)
+function fetch_public_chat_history($connect)
 {
 	$query = "
 	SELECT * FROM chat_message 
@@ -177,7 +172,7 @@ function fetch_group_chat_history($connect)
 		{
 			if($row["status"] == '2')
 			{
-				$chat_message = '<em>This message has been removed</em>';
+				$chat_message = '<em>[DELETED]</em>';
 				$user_name = '<b class="text-success">You</b>';
 			}
 			else
@@ -192,7 +187,7 @@ function fetch_group_chat_history($connect)
 		{
 			if($row["status"] == '2')
 			{
-				$chat_message = '<em>This message has been removed</em>';
+				$chat_message = '<em>[DELETED]</em>';
 			}
 			else
 			{
